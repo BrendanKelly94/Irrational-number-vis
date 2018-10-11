@@ -30,9 +30,11 @@ class ColorPicker extends React.Component {
   render() {
     return (
       <div className = 'color-picker-container' tabindex="-1" >
-        <ChromePicker className = {this.state.isOpen? 'color-picker visible': 'color-picker invisible'} key = {this.color + this.props.id} onChange = {this.handleChange} />
+        <div onBlur = {this.handleBlur} >
+          <ChromePicker className = {this.state.isOpen? 'color-picker visible': 'color-picker invisible'} key = {this.color + this.props.id} onChange = {this.handleChange} />
+        </div>
         <div style ={{display:'flex'}}>
-          <div onBlur = {this.handleBlur} onClick = {this.handleClick} className = 'color-indicator' style = {{backgroundColor: `${this.color}`, height: '20px'}}></div>
+          <div onClick = {this.handleClick} className = 'color-indicator' style = {{backgroundColor: `${this.color}`, height: '20px'}}></div>
           <XButton size = {20} item = {'x'} color = {'#fff'} hoverColor = {this.color} callback= {this.props.deleteColor}/>
         </div>
       </div>
