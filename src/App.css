@@ -1,0 +1,230 @@
+.App {
+  text-align: center;
+}
+
+#root{
+  position: absolute;
+height: 100%;
+width: 100%;
+}
+
+#content{
+  height: 100%;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+html { height: 100%; }
+
+body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100%;
+  background-color: darkgray;
+font-family: 'Karla', sans-serif;}
+
+.label{
+  font-size: 1.25em;
+  text-align:center;
+}
+
+#content{
+  display:flex;
+  justify-content: center;
+}
+
+#middle{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#right{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-left: 2em;
+}
+
+
+#color-select h4{
+  text-align: center;
+}
+
+#download-content{
+  transform-origin: 100% 100%;
+  transition: transform .2s ease, opacity .1s ease;
+}
+
+#download-content button{
+  transition: all .2 ease;
+}
+
+
+.color-indicator{
+  border-radius: 2px;
+  width:225px;
+  height: 1em;
+
+}
+
+.invisible{
+  z-index: -1;
+  transform: scaleY(0);
+  opacity: 0;
+  height: 0;
+}
+
+.visible{
+  transform: scaleY(1);
+  opacity: 1;
+}
+
+.color-picker-container{
+
+  flex-grow: 1;
+   flex-shrink: 1;
+   flex-basis: auto;
+   transition: all .5s
+}
+
+.color-picker-container:focus{
+  outline:none;
+}
+
+.color-picker{
+
+  transform-origin: 100% 0%;
+  transition: transform .2s ease, opacity .1s ease;
+}
+
+.scaleUp{
+  transform: scale(1);
+}
+
+#left{
+  flex-basis: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+svg{
+  background-color: #000;
+}
+
+.button-container{
+  display: flex;
+  justify-content: center;
+
+}
+
+/* #Pi:hover{
+  border-bottom: 2px solid red;
+  background-color: #dddddd;
+}
+
+#e:hover{
+  border-bottom: 2px solid blue;
+  background-color: #dddddd;
+}
+
+#Golden:hover{
+  border-bottom: 2px solid yellow;
+  background-color: #dddddd;
+}
+
+#ln2:hover{
+  border-bottom: 2px solid green;
+  background-color: #dddddd;
+}
+
+#itoi:hover{
+  border-bottom: 2px solid orange;
+  background-color: #dddddd;
+}
+
+#root2:hover{
+  border-bottom: 2px solid pink;
+  background-color: #dddddd;
+} */
+
+
+
+
+.selectable{
+  width: 4em;
+  height: 2em;
+  background-color: darkgrey;
+  border-bottom: 2px solid transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.color{
+  display:flex;
+  margin-top: 1em;
+}
+
+.color button{
+  height: 1em;
+}
+
+
+.number-input h4{
+  text-align:center;
+}
+
+#download button{
+  position: absolute;
+  top: 2%;
+  right: 2%;
+}
+
+#download-content{
+  padding:2%;
+  border-radius: 5px;
+  width: 80%;
+  height: 70%;
+  background-color: #fff;
+  overflow-y: scroll;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+.download-invisible{
+  display:none;
+}
