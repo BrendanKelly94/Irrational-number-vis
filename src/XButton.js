@@ -12,6 +12,11 @@ class XButton extends React.Component {
     this.transitionCounter = 0;
     this.line1 = React.createRef();
     this.line2 = React.createRef();
+    this.itemColor = {
+      plus: '#ddd',
+      minus: '#ddd',
+      x: '#ff0000'
+    }
     this.itemPos = {
       minus: {
         line1: {
@@ -115,7 +120,6 @@ class XButton extends React.Component {
 
   animate(){
     if(this.transitionCounter === 1){
-      console.log('pls')
       this.line1Forward.play();
       this.line2Forward.play();
     }else{
@@ -152,7 +156,7 @@ class XButton extends React.Component {
       {stroke: '#25FF00',strokeWidth:`${this.props.size/10}`,
       strokeLinecap: 'round'}
       :
-      {...this.lineStyle, stroke:`#FF0000`}
+      {...this.lineStyle, stroke:this.itemColor[item]}
 
     return (
       <button onClick = {this.props.callback} style = {{padding: '0', backgroundColor: 'transparent', border: 'none'}}>
