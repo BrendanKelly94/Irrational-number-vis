@@ -43,9 +43,9 @@ class NumberInput extends React.Component {
       <div style ={{display:'flex', flexDirection: 'column'}}>
         <p className = 'label'> {this.props.label} </p>
         <div style = {{display: 'flex', justifyContent:'center', alignItems: 'center'}}>
-          <XButton size = {20} item = {'minus'} color = {'#000'} hoverColor = {'#ddd'} callback= {this.down}/>
+          <XButton size = {20} item = {'minus'} color = {'#000'} hoverColor = {'#ddd'} callback= {this.down} transition = {false}/>
           <input onChange = {this.handleInput} value = {this.state.number}/>
-          <XButton size = {20} item = {'plus'} color = {'#000'} hoverColor = {'#ddd'} callback= {this.up}/>
+          <XButton size = {20} item = {'plus'} color = {'#000'} hoverColor = {'#ddd'} callback= {this.up} transition = {false}/>
         </div>
       </div>
     );

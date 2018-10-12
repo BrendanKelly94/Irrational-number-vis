@@ -54,7 +54,7 @@ class ColorSelect extends React.Component {
           })
         }
         <div style = {{marginTop: '1em', display: 'flex', justifyContent: 'center'}}>
-          <XButton size = {20} item = {'plus'} color = {'#000'} hoverColor = {'#ddd'} callback= {this.addColor}/>
+          <XButton size = {30} item = {'plus'} color = {'#000'} hoverColor = {'#ddd'} callback= {this.addColor} transition ={false}/>
         </div>
         <div style = {{marginTop: '.5em', display: 'flex', justifyContent: 'flex-end'}}>
           <OutlineButton text = {'Apply'} callback = {_ => this.props.callback(this.colorBuf)} fontSize = '.75' />
