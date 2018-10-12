@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Number from './Number.js';
+import anime from 'animejs';
 
 class XButton extends React.Component {
   constructor(props){
@@ -7,6 +8,9 @@ class XButton extends React.Component {
     this.state = {
       hover: false
     }
+    this.hasOpen = false;
+    this.effectiveHoverColor = {};
+    this.transitionCounter = 0;
     this.line1 = React.createRef();
     this.line2 = React.createRef();
     this.itemPos = {
@@ -66,6 +70,7 @@ class XButton extends React.Component {
       transform: 'translate(0,0)scale(.8)',
       transition: 'transform .5s ease'
     }
+    this.hoverStyle = {}
     this.line1Forward = null;
     this.line2Forward = null;
     this.handleClick = this.handleClick.bind(this);
@@ -75,40 +80,56 @@ class XButton extends React.Component {
   }
 
   componentDidMount(){
-    // this.line1Forward = anime({
-    //   targets: this.line1.current,
-    //   x1:35,
-    //   y1:40,
-    //   x2: 60,
-    //   y2: 60,
-    //   easing: 'linear',
-    //   duration: 200,
-    //   autoplay: false,
-    //   offset: 0
-    // });
-    // this.line2Forward = anime({
-    //   targets: this.line2.current,
-    //   x1:95,
-    //   y1:5,
-    //   x2:60,
-    //   y2:60,
-    //   easing: 'linear',
-    //   duration: 200,
-    //   autoplay:false,
-    //   offset:0
-    // });
+    this.line1Forward = anime({
+      targets: this.line1.current,
+      x1:.35 * this.props.size,
+      y1:.40 * this.props.size,
+      x2: .60 * this.props.size,
+      y2: .60 * this.props.size,
+      scale: (1),
+      easing: 'linear',
+      duration: 200,
+      autoplay: false,
+      offset: 0
+    });
+    this.line2Forward = anime({
+      targets: this.line2.current,
+      x1:.95 * this.props.size,
+      y1:.05 * this.props.size,
+      x2:.60 * this.props.size,
+      y2:.60 * this.props.size,
+      scale: (1),
+      easing: 'linear',
+      duration: 200,
+      autoplay:false,
+      offset:0
+    });
+  }
+
+  componentDidUpdate(prevProps, prevState){
+
+    if(prevProps.transition !== this.props.transition){
+      this.transitionCounter++;
+      this.animate();
+    }
   }
 
   animate(){
-    // this.line1Forward.play();
-    // this.line2Forward.play();
-    // this.line1Forward.reverse();
-    // this.line2Forward.reverse();
+    if(this.transitionCounter === 1){
+      console.log('pls')
+      this.line1Forward.play();
+      this.line2Forward.play();
+    }else{
+      this.line1Forward.play();
+      this.line2Forward.play();
+      this.line1Forward.reverse();
+      this.line2Forward.reverse();
+    }
   }
 
   handleClick(){
-    // this.animate();
-    // this.props.callback();
+    this.animate();
+    this.props.callback();
   }
 
   handleEnter(){
@@ -126,21 +147,26 @@ class XButton extends React.Component {
   render() {
     const { size, item, color, hoverColor, transition} = this.props;
 
-    let effectiveHoverColor;
-
     if(hoverColor === '#000' && color === '#000'){
-      effectiveHoverColor = '#fff';
+      this.effectiveHoverColor = '#fff';
     }else if(hoverColor === '#fff' && color === '#fff'){
-      effectiveHoverColor = '#000'
+      this.effectiveHoverColor = '#000'
     }else{
-      effectiveHoverColor = hoverColor;
+      this.effectiveHoverColor = hoverColor;
     }
+
+
+    this.hoverStyle = transition?
+      {stroke: '#25FF00',strokeWidth:`${this.props.size/10}`,
+      strokeLinecap: 'round'}
+      :
+      {...this.lineStyle, stroke:`${this.effectiveHoverColor}`}
 
     return (
       <button onClick = {this.props.callback} style = {{padding: '0', backgroundColor: 'transparent', border: 'none'}}>
-        <svg onMouseEnter = {this.handleEnter} onMouseLeave = {this.handleLeave} width={size} height={size} style ={this.props.transition?{...this.svgStyle, transform:'translate(0,-241.75px)'}: this.svgStyle}>
-          <line ref = {this.line1} x1={this.itemPos[item].line1.x1} y1={this.itemPos[item].line1.y1} x2={this.itemPos[item].line1.x2} y2={this.itemPos[item].line1.y2} style={(this.state.hover)?{...this.lineStyle, stroke:`${effectiveHoverColor}`}:this.lineStyle} />
-          <line ref = {this.line2} x1 = {this.itemPos[item].line2.x1} y1 = {this.itemPos[item].line2.y1} x2 = {this.itemPos[item].line2.x2} y2 = {this.itemPos[item].line2.y2} style = {(this.state.hover)?{...this.lineStyle, stroke:`${effectiveHoverColor}`}:this.lineStyle} />
+        <svg onMouseEnter = {this.handleEnter} onMouseLeave = {this.handleLeave} width={size} height={size} style ={transition?{...this.svgStyle, transform:'translate(0,-241.75px)'}: this.svgStyle}>
+          <line ref = {this.line1} x1={this.itemPos[item].line1.x1} y1={this.itemPos[item].line1.y1} x2={this.itemPos[item].line1.x2} y2={this.itemPos[item].line1.y2} style={(this.state.hover)?this.hoverStyle:this.lineStyle} />
+          <line ref = {this.line2} x1 = {this.itemPos[item].line2.x1} y1 = {this.itemPos[item].line2.y1} x2 = {this.itemPos[item].line2.x2} y2 = {this.itemPos[item].line2.y2} style = {(this.state.hover)?this.hoverStyle:this.lineStyle} />
         </svg>
       </button>
     );
