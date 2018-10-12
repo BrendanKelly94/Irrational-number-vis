@@ -9,6 +9,18 @@ class DownloadSvg extends React.Component {
     }
     this.handleClick = this.handleClick.bind(this);
     this.handleBlur = this.handleBlur.bind(this);
+    this.downloadContentStyle = {
+      padding:'2%',
+      borderRadius: '5px',
+      width: '80%',
+      height: '70%',
+      backgroundColor: '#fff',
+      overflowY: 'scroll',
+      position: 'absolute',
+      left: '50%',
+      top: '50%',
+      transform: 'translate(-50%, -50%)'
+    }
     this.string = '';
   }
 
@@ -28,11 +40,13 @@ class DownloadSvg extends React.Component {
 
   render() {
     return (
-      <div id = 'download'>
-        <div id = 'download-content' onBlur = {this.handleBlur} tabindex="-1" className = {(this.state.isOpen)?'visible': 'invisible'}>
+      <div>
+        <div id = 'download-content' style = {this.downloadContentStyle} onBlur = {this.handleBlur} tabindex="-1" className = {(this.state.isOpen)?'visible': 'invisible'}>
           {this.string}
         </div>
-        <OutlineButton fontSize = {'1'} text = {'Download'} callback = {this.handleClick} />
+        <div style = {{position:'absolute',top: '2%', right: '2%'}}>
+          <OutlineButton fontSize = {'1'} text = {'Download'} callback = {this.handleClick} />
+        </div>
       </div>
     );
   }

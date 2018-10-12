@@ -8,6 +8,26 @@ class ColorPicker extends React.Component {
     this.state = {
       isOpen: false,
     }
+    this.colorPickerStyle = {
+      transformOrigin: '100% 0%',
+      transition: 'transform .2s ease, opacity .1s ease'
+    }
+    this.invisibleStyle = {
+      zIndex: '-1',
+      transform: 'scaleY(0)',
+      opacity: '0',
+      height: '0'
+    }
+    this.visibleStyle = {
+      transform: 'scaleY(1)',
+      opacity: '1'
+    }
+    this.colorIndicatorStyle = {
+      borderRadius: '2px',
+      width:'225px',
+      backgroundColor: `${props.color}`,
+      height: '20px'
+    }
 
     this.color = '#fff';
     this.handleClick = this.handleClick.bind(this);
@@ -26,11 +46,22 @@ class ColorPicker extends React.Component {
 
   render() {
     const {isOpen} = this.state;
+
+    this.colorIndicatorStyle = {
+      borderRadius: '2px',
+      width:'225px',
+      backgroundColor: `${this.color}`,
+      height: '20px'
+    }
+
     return (
-      <div id = 'test' className = 'color-picker-container' >
-        <ChromePicker className = {isOpen? 'color-picker visible': 'color-picker invisible'} key = {this.color + this.props.id} onChange = {this.handleChange} />
+      <div>
+        <div style = {isOpen? {...this.colorPickerStyle, ...this.visibleStyle}: {...this.colorPickerStyle, ...this.invisibleStyle}} >
+          <ChromePicker key = {this.color + this.props.id} onChange = {this.handleChange} />
+        </div>
         <div style ={{display:'flex'}}>
-          <div onClick = {this.handleClick} className = 'color-indicator' style = {{backgroundColor: `${this.color}`, height: '20px'}}></div>
+
+          <div onClick = {this.handleClick} style = {this.colorIndicatorStyle}></div>
           <XButton size = {20} item = {'x'} color = {'#fff'} hoverColor = {this.color} callback= {(isOpen)?this.handleClick:this.props.deleteColor} transition = {isOpen}/>
         </div>
       </div>

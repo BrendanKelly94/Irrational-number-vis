@@ -19,7 +19,7 @@ class NumberSelect extends React.Component {
 
   render() {
     return (
-      <div className = "button-container">
+      <div style = {{display: 'flex',justifyContent: 'center'}}>
         {this.props.numbers.map(num => {
           return <Number key = {num.name} num = {num} setActive = {this.setActive} active = {this.state.active}/>
         })}

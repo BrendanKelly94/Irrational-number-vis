@@ -23,7 +23,7 @@ class SpecialSvg extends React.Component {
   nAngle += this.props.angle;
 }
     return (
-      <svg id = 's' width = "500" height = "500" viewBox = "-500 -500 1100 1100" fill = "#000">
+      <svg id = 's' style = {{backgroundColor:'#000'}} width = "500" height = "500" viewBox = "-500 -500 1100 1100">
         <circle cx="50" cy="50" r="1" stroke="black" stroke-width="1" fill="red" />
 
         {

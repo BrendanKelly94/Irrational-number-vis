@@ -17,6 +17,15 @@ class Number extends React.Component {
       backgroundColor: 'transparent',
       borderBottom: '2px solid transparent',
     }
+    this.selectableStyle = {
+      width: '4em',
+      height: '2em',
+      backgroundColor: 'darkgrey',
+      borderBottom: '2px solid transparent',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center'
+    }
     this.handleMouseEnter= this.handleMouseEnter.bind(this);
     this.handleMouseLeave= this.handleMouseLeave.bind(this);
     this.handleClick = this.handleClick.bind(this);
@@ -40,11 +49,10 @@ class Number extends React.Component {
     const {num, active} = this.props;
     return (
       <div id = {num.name}
-        className = 'selectable'
         onMouseEnter = {this.handleMouseEnter}
         onMouseLeave = {this.handleMouseLeave}
         onClick = {this.handleClick}
-        style = {(active === num.name)? this.hoverState: this.state.style}
+        style = {(active === num.name)? {...this.selectableStyle, ...this.hoverState}: {...this.selectableStyle, ...this.state.style}}
       >
         {num.name}
       </div>

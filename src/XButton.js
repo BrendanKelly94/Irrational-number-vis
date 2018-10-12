@@ -15,7 +15,7 @@ class XButton extends React.Component {
     this.itemColor = {
       plus: '#ddd',
       minus: '#ddd',
-      x: '#ff0000'
+      x: '#FF474B'
     }
     this.itemPos = {
       minus: {

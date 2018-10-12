@@ -43,11 +43,11 @@ class ColorSelect extends React.Component {
 
     return (
       <div style = {{display: 'flex',flexDirection: 'column'}}>
-        <p className = 'label'> Color Picker </p>
+        <p style = {{fontSize: '1.25em',textAlign:'center'}}> Color Picker </p>
         {
           this.state.colors.map((item, index) => {
             return (
-              <div className = 'color'>
+              <div style = {{display:'flex',marginTop: '1em'}}>
                 <ColorPicker id = {index} changeColor = {this.changeColor} deleteColor = {_ => this.deleteColor(index)}/>
               </div>
             )
