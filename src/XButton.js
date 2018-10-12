@@ -9,7 +9,6 @@ class XButton extends React.Component {
       hover: false
     }
     this.hasOpen = false;
-    this.effectiveHoverColor = {};
     this.transitionCounter = 0;
     this.line1 = React.createRef();
     this.line2 = React.createRef();
@@ -88,7 +87,7 @@ class XButton extends React.Component {
       y2: .60 * this.props.size,
       scale: (1),
       easing: 'linear',
-      duration: 200,
+      duration: 500,
       autoplay: false,
       offset: 0
     });
@@ -100,7 +99,7 @@ class XButton extends React.Component {
       y2:.60 * this.props.size,
       scale: (1),
       easing: 'linear',
-      duration: 200,
+      duration: 500,
       autoplay:false,
       offset:0
     });
@@ -147,20 +146,13 @@ class XButton extends React.Component {
   render() {
     const { size, item, color, hoverColor, transition} = this.props;
 
-    if(hoverColor === '#000' && color === '#000'){
-      this.effectiveHoverColor = '#fff';
-    }else if(hoverColor === '#fff' && color === '#fff'){
-      this.effectiveHoverColor = '#000'
-    }else{
-      this.effectiveHoverColor = hoverColor;
-    }
 
 
     this.hoverStyle = transition?
       {stroke: '#25FF00',strokeWidth:`${this.props.size/10}`,
       strokeLinecap: 'round'}
       :
-      {...this.lineStyle, stroke:`${this.effectiveHoverColor}`}
+      {...this.lineStyle, stroke:`#FF0000`}
 
     return (
       <button onClick = {this.props.callback} style = {{padding: '0', backgroundColor: 'transparent', border: 'none'}}>
