@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Number from './Number.js';
 
 class XButton extends React.Component {
   constructor(props){

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import ColorPicker from './ColorPicker';
-import XButton from './XButton.js';
-import OutlineButton from './OutlineButton';
+import ColorPicker from '../left/ColorPicker';
+import XButton from '../common/XButton.js';
+import OutlineButton from '../common/OutlineButton';
 
 class ColorSelect extends React.Component {
   constructor(props){

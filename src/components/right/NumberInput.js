@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import XButton from './XButton.js';
+import XButton from '../common/XButton.js';
 //rename to controls
 class NumberInput extends React.Component {
   constructor(props){

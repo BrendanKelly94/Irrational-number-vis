@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { ChromePicker } from 'react-color';
-import XButton from './XButton.js';
+import XButton from '../common/XButton.js';
 
 class ColorPicker extends React.Component {
   constructor(props){

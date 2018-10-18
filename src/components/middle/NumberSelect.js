@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Number from './Number.js';
+import Number from '../middle/Number.js';
 
 class NumberSelect extends React.Component {
   constructor(props){

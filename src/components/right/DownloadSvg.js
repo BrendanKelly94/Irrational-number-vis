@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import OutlineButton from './OutlineButton.js';
+import OutlineButton from '../common/OutlineButton.js';
 
 class DownloadSvg extends React.Component {
   constructor(props){

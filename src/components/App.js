@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import {TweenMax, Linear} from 'gsap';
-import logo from './logo.svg';
-import NumberSelect from './NumberSelect.js';
-import ColorSelect from './ColorSelect.js';
-import SpecialSvg from './SpecialSvg.js';
-import NumberInput from './NumberInput.js';
-import DownloadSvg from './DownloadSvg.js';
-import './App.css';
+import NumberSelect from './middle/NumberSelect.js';
+import ColorSelect from './left/ColorSelect.js';
+import SpecialSvg from './middle/SpecialSvg.js';
+import NumberInput from './right/NumberInput.js';
+import DownloadSvg from './right/DownloadSvg.js';
+import '.././App.css';
 
 class App extends Component {
   constructor(props){
@@ -18,12 +17,12 @@ class App extends Component {
       circleCount: 100
     }
     this.iNums = {
-        Pi: 0.31415926535897932384626433832795,
+        Pi: 0.318309886183791,
         e : 0.27182818284590452353602874713527,
         Golden : 0.61803398874989484820,
         ln2 : 0.69314718056,
         itoi: 0.207879576,
-        root2: 0.141421356237
+        root2: 99/70
     }
     this.numbers = [
       {name: 'Pi', color: '#EA3546'},
