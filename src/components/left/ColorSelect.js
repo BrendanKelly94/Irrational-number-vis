@@ -17,7 +17,6 @@ class ColorSelect extends React.Component {
   }
 
   addColor(){
-    this.colorBuf = [...this.colorBuf, '#ffffff']
     this.setState(prevState => ({
       colors: [...prevState.colors, '#ffffff']
     }));
@@ -30,9 +29,9 @@ class ColorSelect extends React.Component {
   }
 
   changeColor(color, id){
-    const tempArr = this.colorBuf;
+    const tempArr = this.state.colors.slice();
     tempArr[id] = color;
-    this.colorBuf = tempArr;
+    this.setState({colors: tempArr});
   }
 
   idSelect(id){
@@ -48,7 +47,7 @@ class ColorSelect extends React.Component {
           this.state.colors.map((item, index) => {
             return (
               <div style = {{display:'flex',marginTop: '1em'}}>
-                <ColorPicker id = {index} changeColor = {this.changeColor} deleteColor = {_ => this.deleteColor(index)}/>
+                <ColorPicker id = {index} color = {item} changeColor = {this.changeColor} deleteColor = {_ => this.deleteColor(index)}/>
               </div>
             )
           })

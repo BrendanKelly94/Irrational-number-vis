@@ -6,10 +6,11 @@ class SpecialSvg extends React.Component {
   }
 
   render() {
+    console.log(this.props.colors)
     let circles = [];
     let nAngle = this.props.angle;
     let size = 1;
-    let color = "red";
+    let color = this.props.colors[Math.floor(Math.random() * this.props.colors.length)];
     let r = 10;
     for(let i = 0; i < this.props.circleCount; i++){
       if(i % this.props.den === 0){

@@ -28,41 +28,46 @@ class ColorPicker extends React.Component {
       backgroundColor: `${props.color}`,
       height: '20px'
     }
-
-    this.color = '#fff';
+    this.color = props.color;
     this.handleClick = this.handleClick.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(e){
     this.color = e.hex;
-    this.props.changeColor(e.hex, this.props.id);
+
   }
 
-
   handleClick(){
-    this.setState({isOpen: !this.state.isOpen})
+
+    const hasOpen = this.state.isOpen;
+    this.setState({isOpen: !this.state.isOpen}, _ => {
+      if(hasOpen){
+        this.props.changeColor(this.color, this.props.id);
+      }
+      return;
+    })
+
   }
 
   render() {
     const {isOpen} = this.state;
-
     this.colorIndicatorStyle = {
       borderRadius: '2px',
       width:'225px',
-      backgroundColor: `${this.color}`,
+      backgroundColor: `${this.props.color}`,
       height: '20px'
     }
 
     return (
       <div>
         <div style = {isOpen? {...this.colorPickerStyle, ...this.visibleStyle}: {...this.colorPickerStyle, ...this.invisibleStyle}} >
-          <ChromePicker key = {this.color + this.props.id} onChange = {this.handleChange} />
+          <ChromePicker onChange = {this.handleChange} />
         </div>
         <div style ={{display:'flex'}}>
 
           <div onClick = {this.handleClick} style = {this.colorIndicatorStyle}></div>
-          <XButton size = {20} item = {'x'} color = {'#fff'} hoverColor = {this.color} callback= {(isOpen)?this.handleClick:this.props.deleteColor} transition = {isOpen}/>
+          <XButton size = {20} item = {'x'} color = {'#fff'} callback= {(isOpen)?this.handleClick:(_ => this.props.deleteColor(this.props.id))} transition = {isOpen}/>
         </div>
       </div>
     );
