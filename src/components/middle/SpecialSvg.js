@@ -6,7 +6,6 @@ class SpecialSvg extends React.Component {
   }
 
   render() {
-    console.log(this.props.colors)
     let circles = [];
     let nAngle = this.props.angle;
     let size = 1;

@@ -44,15 +44,12 @@ class Number extends React.Component {
   }
   handleClick(){
     this.props.setActive(this.props.num.name);
-    if(this.props.num.name === custom){
-
-    }
   }
 
   render() {
     const {num, active} = this.props;
     return (
-      
+
       <div id = {num.name}
         onMouseEnter = {this.handleMouseEnter}
         onMouseLeave = {this.handleMouseLeave}
