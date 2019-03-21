@@ -41,7 +41,7 @@ class DownloadSvg extends React.Component {
   render() {
     return (
       <div>
-        <div id = 'download-content' style = {this.downloadContentStyle} onBlur = {this.handleBlur} tabindex="-1" className = {(this.state.isOpen)?'visible': 'invisible'}>
+        <div id = 'download-content' style = {this.downloadContentStyle} onBlur = {this.handleBlur} tabIndex="-1" className = {(this.state.isOpen)?'visible': 'invisible'}>
           {this.string}
         </div>
         <div style = {{position:'absolute',top: '2%', right: '2%'}}>

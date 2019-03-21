@@ -25,11 +25,11 @@ class SpecialSvg extends React.Component {
 }
     return (
       <svg id = 's' style = {{backgroundColor:'#000'}} width = "500" height = "500" viewBox = "-500 -500 1100 1100">
-        <circle cx="50" cy="50" r="1" stroke="black" stroke-width="1" fill="red" />
+        <circle cx="50" cy="50" r="1" stroke="black" strokeWidth="1" fill="red" />
 
         {
           circles.map(item =>
-              <circle className = {item.color} cx="50" cy="50" r={item.size} stroke="black" stroke-width="1" fill= {item.color} transform = {`translate(${item.tx} ${item.ty})`}/>
+              <circle className = {item.color} cx="50" cy="50" r={item.size} stroke="black" strokeWidth="1" fill= {item.color} transform = {`translate(${item.tx} ${item.ty})`}/>
             )
         }
       </svg>

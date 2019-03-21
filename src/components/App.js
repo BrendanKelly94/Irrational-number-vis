@@ -5,8 +5,7 @@ import ColorSelect from './left/ColorSelect.js';
 import SpecialSvg from './middle/SpecialSvg.js';
 import NumberInput from './right/NumberInput.js';
 import DownloadSvg from './right/DownloadSvg.js';
-import '.././App.css';
-
+import "../App.css"
 class App extends Component {
   constructor(props){
     super(props);
