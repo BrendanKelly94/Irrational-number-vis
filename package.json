@@ -2,7 +2,8 @@
   "name": "irrational-app",
   "version": "1.0.0",
   "engines": {
-    "node": "9.2.0"
+    "node": "9.2.0",
+    "npm": "5.5.1"
   },
   "description": "",
   "scripts": {
