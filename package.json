@@ -19,10 +19,13 @@
     "@babel/preset-react": "^7.0.0",
     "animejs": "^3.0.1",
     "babel-loader": "^8.0.5",
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.4",
     "css-loader": "^2.1.1",
     "express": "^4.16.4",
     "gsap": "^2.1.2",
     "jade": "^1.11.0",
+    "morgan": "^1.9.1",
     "react": "^16.8.4",
     "react-color": "^2.17.0",
     "react-dom": "^16.8.4",
@@ -30,5 +33,4 @@
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0"
   }
-
 }
