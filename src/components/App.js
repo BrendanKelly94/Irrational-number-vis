@@ -21,7 +21,8 @@ class App extends Component {
         Golden : 0.61803398874989484820,
         ln2 : 0.69314718056,
         itoi: 0.207879576,
-        root2: 99/70
+        root2: 99/70,
+        custom: 0.00
     }
     this.numbers = [
       {name: 'Pi', color: '#EA3546'},
@@ -29,7 +30,8 @@ class App extends Component {
       {name: 'Golden' , color: '#F9C80E'},
       {name: 'ln2' , color: '#F86624'},
       {name: 'itoi' , color: '#CBF3F0'},
-      {name: 'root2' , color: '#43BCCD'}
+      {name: 'root2' , color: '#43BCCD'},
+
     ];
     this.columnStyle = {
       display: 'flex',
@@ -75,8 +77,13 @@ class App extends Component {
     TweenMax.to(`.${this.state.colors[0]}`, 4, {rotation:360, repeat:-1, transformOrigin:"250px 250px", ease:Linear.easeNone})
   }
 
-  changeNumber(num){
+  changeNumber(num, custom){
+    if(custom !== undefined){
+      this.iNums['custom'] = custom;
+    }
+    console.log(this.iNums)
     this.setState({number: num});
+
   }
 
   setGrain(num){

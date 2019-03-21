@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Number from '../middle/Number.js';
+import CustomNumber from '../middle/CustomNumber.js'
 
 class NumberSelect extends React.Component {
   constructor(props){
@@ -8,6 +9,7 @@ class NumberSelect extends React.Component {
       active: 'Pi'
     }
     this.setActive = this.setActive.bind(this);
+    this.setCustomActive = this.setCustomActive.bind(this);
   }
 
   setActive(num){
@@ -17,12 +19,18 @@ class NumberSelect extends React.Component {
     this.props.changeNum(num);
   }
 
+  setCustomActive(number){
+    this.setState({active: 'custom'});
+    this.props.changeNum('custom', number)
+  }
+
   render() {
     return (
       <div style = {{display: 'flex',justifyContent: 'center'}}>
         {this.props.numbers.map(num => {
           return <Number key = {num.name} num = {num} setActive = {this.setActive} active = {this.state.active}/>
         })}
+        <CustomNumber setActive = {this.setCustomActive} active = {this.state.active}/>
       </div>
     );
   }
