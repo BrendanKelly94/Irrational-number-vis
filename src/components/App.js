@@ -37,12 +37,36 @@ class App extends Component {
       alignItems: 'center',
       justifyContent: 'center'
     }
+
+
     this.changeNumber = this.changeNumber.bind(this);
     this.animate = this.animate.bind(this);
     this.setColors = this.setColors.bind(this);
     this.setCircleCount = this.setCircleCount.bind(this);
     this.setGrain = this.setGrain.bind(this);
+    this.lighten = this.lighten.bind(this);
+
   }
+
+  lighten(color, luminosity) {
+
+	// validate hex string
+	color = new String(color).replace(/[^0-9a-f]/gi, '');
+	if (color.length < 6) {
+		color = color[0]+ color[0]+ color[1]+ color[1]+ color[2]+ color[2];
+	}
+	luminosity = luminosity || 0;
+
+	// convert to decimal and change luminosity
+	var newColor = "#", c, i, black = 0, white = 255;
+	for (i = 0; i < 3; i++) {
+		c = parseInt(color.substr(i*2,2), 16);
+		c = Math.round(Math.min(Math.max(black, c + (luminosity * white)), white)).toString(16);
+		newColor += ("00"+c).substr(c.length);
+	}
+	return newColor;
+}
+
 
   setCircleCount(count){
     this.setState({ circleCount : count});
@@ -62,12 +86,24 @@ class App extends Component {
   }
 
   setColors(colors){
+    const lastColor = colors[colors.length - 1];
+    TweenMax.to('#background', .5, {background: `linear-gradient(45deg, ${this.lighten(lastColor, .5)},${lastColor})` })
     this.setState({colors: colors});
+    //`-moz-linear-gradient(45deg, ${lastColor} 0%, ${this.lighten(lastColor, .5)} 100%)`
+    // background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, ${lastColor}), color-stop(100%, ${this.lighten(lastColor, .5)}))
+    // background: -webkit-linear-gradient(45deg, ${lastColor} 0%, ${this.lighten(lastColor, .5)} 100%)
+    // background: -o-linear-gradient(45deg, ${lastColor} 0%, ${this.lighten(lastColor, .5)} 100%)
+    // background: -ms-linear-gradient(45deg, ${lastColor} 0%, ${this.lighten(lastColor, .5)} 100%)
+    // background: linear-gradient(45deg, ${lastColor} 0%, ${this.lighten(lastColor, .5)} 100%)
+  }
+
+  componentDidMount() {
+    TweenMax.to('#background', .5, {background: `linear-gradient(45deg, ${this.lighten('#898989', .5)},#898989)`})
   }
 
   render() {
     return (
-      <div style = {{display: 'flex', justifyContent: 'space-evenly', height: '100%'}}>
+      <div id = "background">
         <div style = {this.columnStyle}>
           <ColorSelect callback = {this.setColors}/>
         </div>

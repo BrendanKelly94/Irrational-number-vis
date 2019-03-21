@@ -7,7 +7,8 @@ class Number extends React.Component {
       style: {
         backgroundColor: 'transparent',
         borderBottom: '2px solid transparent',
-      }
+      },
+      isCustom: false
     }
     this.hoverState = {
       backgroundColor: '#ddd',
@@ -43,11 +44,15 @@ class Number extends React.Component {
   }
   handleClick(){
     this.props.setActive(this.props.num.name);
+    if(this.props.num.name === custom){
+
+    }
   }
 
   render() {
     const {num, active} = this.props;
     return (
+      
       <div id = {num.name}
         onMouseEnter = {this.handleMouseEnter}
         onMouseLeave = {this.handleMouseLeave}
