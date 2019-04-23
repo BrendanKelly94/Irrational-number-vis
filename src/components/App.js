@@ -94,7 +94,7 @@ class App extends Component {
 
   setColors(colors){
     const lastColor = colors[colors.length - 1];
-    TweenMax.to('#background', .5, {background: `linear-gradient(45deg, ${this.lighten(lastColor, .5)},${lastColor})` })
+    TweenMax.to('#background', .5, {backgroundImage: `linear-gradient(45deg, ${this.lighten(lastColor, .5)},${lastColor})` })
     this.setState({colors: colors});
     //`-moz-linear-gradient(45deg, ${lastColor} 0%, ${this.lighten(lastColor, .5)} 100%)`
     // background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, ${lastColor}), color-stop(100%, ${this.lighten(lastColor, .5)}))
@@ -105,7 +105,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    TweenMax.to('#background', .5, {background: `linear-gradient(45deg, ${this.lighten('#898989', .5)},#898989)`})
+    TweenMax.to('#background', .5, {backgroundImage: `linear-gradient(45deg, ${this.lighten('#898989', .5)},#898989)`})
   }
 
   render() {

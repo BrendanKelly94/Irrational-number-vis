@@ -73,6 +73,13 @@ class XButton extends React.Component {
       transform: 'translate(0,0)scale(.8)',
       transition: 'transform .5s ease'
     }
+
+    this.buttonStyle = {
+      padding: '0',
+      backgroundColor: 'transparent',
+      border: 'none',
+      transition: 'transform .5s ease'
+    }
     this.hoverStyle = {}
     this.line1Forward = null;
     this.line2Forward = null;
@@ -130,7 +137,7 @@ class XButton extends React.Component {
   }
 
   handleClick(){
-    this.animate();
+    // this.animate();
     this.props.callback();
   }
 
@@ -158,8 +165,8 @@ class XButton extends React.Component {
       {...this.lineStyle, stroke:this.itemColor[item]}
 
     return (
-      <button onClick = {this.props.callback} style = {{padding: '0', backgroundColor: 'transparent', border: 'none'}}>
-        <svg onMouseEnter = {this.handleEnter} onMouseLeave = {this.handleLeave} width={size} height={size} style ={transition?{...this.svgStyle, transform:'translate(0,-241.75px)'}: this.svgStyle}>
+      <button onClick = {this.props.callback} style = {transition?{transform:'translate(0,-241.75px)', ...this.buttonStyle}: this.buttonStyle }>
+        <svg onMouseEnter = {this.handleEnter} onMouseLeave = {this.handleLeave} width={size} height={size} style = {this.svgStyle} >
           <line ref = {this.line1} x1={this.itemPos[item].line1.x1} y1={this.itemPos[item].line1.y1} x2={this.itemPos[item].line1.x2} y2={this.itemPos[item].line1.y2} style={(this.state.hover)?this.hoverStyle:this.lineStyle} />
           <line ref = {this.line2} x1 = {this.itemPos[item].line2.x1} y1 = {this.itemPos[item].line2.y1} x2 = {this.itemPos[item].line2.x2} y2 = {this.itemPos[item].line2.y2} style = {(this.state.hover)?this.hoverStyle:this.lineStyle} />
         </svg>
