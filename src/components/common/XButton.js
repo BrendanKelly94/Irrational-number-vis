@@ -12,8 +12,8 @@ class XButton extends React.Component {
     this.line1 = React.createRef();
     this.line2 = React.createRef();
     this.itemColor = {
-      plus: '#ddd',
-      minus: '#ddd',
+      plus: '#000',
+      minus: '#000',
       x: '#FF474B'
     }
     this.itemPos = {
@@ -125,19 +125,15 @@ class XButton extends React.Component {
   }
 
   animate(){
-    if(this.transitionCounter === 1){
-      this.line1Forward.play();
-      this.line2Forward.play();
-    }else{
-      this.line1Forward.play();
-      this.line2Forward.play();
+    this.line1Forward.play();
+    this.line2Forward.play();
+    this.line1Forward.finished.then(() => {
       this.line1Forward.reverse();
       this.line2Forward.reverse();
-    }
+    })
   }
 
   handleClick(){
-    // this.animate();
     this.props.callback();
   }
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class XButton extends React.Component {
+class OutlineButton extends React.Component {
   constructor(props){
     super(props);
     this.state = {
@@ -11,10 +11,10 @@ class XButton extends React.Component {
       backgroundColor: 'transparent',
       borderWidth: `${2*this.props.fontSize}px`,
       borderStyle: 'solid',
-      borderColor: '#fff',
+      borderColor: '#000',
       borderRadius: '6px',
       padding: `${5*this.props.fontSize}px ${7*this.props.fontSize}px ${5*this.props.fontSize}px ${7*this.props.fontSize}px`,
-      color: '#fff',
+      color: '#000',
     }
     this.handleEnter = this.handleEnter.bind(this);
     this.handleLeave = this.handleLeave.bind(this);
@@ -34,12 +34,12 @@ class XButton extends React.Component {
 
   render() {
     return (
-      <button onMouseEnter = {this.handleEnter} onMouseLeave = {this.handleLeave} onClick = {this.props.callback} style = {(this.state.hover)?{...this.buttonStyle, color:'#000', borderColor: '#000'}:this.buttonStyle}>
-        {this.props.text}
+      <button onMouseEnter = {this.handleEnter} onMouseLeave = {this.handleLeave} onClick = {this.props.callback} style = {(this.state.hover)?{...this.buttonStyle, backgroundColor: 'rgba(0,0,0,.5)'}:this.buttonStyle}>
+        {this.props.children}
       </button>
     );
   }
 }
 
 
-export default XButton;
+export default OutlineButton;

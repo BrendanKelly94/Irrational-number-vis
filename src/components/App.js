@@ -81,7 +81,6 @@ class App extends Component {
     if(custom !== undefined){
       this.iNums['custom'] = custom;
     }
-    console.log(this.iNums)
     this.setState({number: num});
 
   }
@@ -94,7 +93,7 @@ class App extends Component {
 
   setColors(colors){
     const lastColor = colors[colors.length - 1];
-    TweenMax.to('#background', .5, {backgroundImage: `linear-gradient(45deg, ${this.lighten(lastColor, .5)},${lastColor})` })
+    TweenMax.to('#root', .5, {backgroundImage: `linear-gradient(45deg, ${this.lighten(lastColor, .5)},${lastColor})` })
     this.setState({colors: colors});
     //`-moz-linear-gradient(45deg, ${lastColor} 0%, ${this.lighten(lastColor, .5)} 100%)`
     // background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, ${lastColor}), color-stop(100%, ${this.lighten(lastColor, .5)}))
@@ -105,12 +104,12 @@ class App extends Component {
   }
 
   componentDidMount() {
-    TweenMax.to('#background', .5, {backgroundImage: `linear-gradient(45deg, ${this.lighten('#898989', .5)},#898989)`})
+    TweenMax.to('#root', .5, {backgroundImage: `linear-gradient(45deg, ${this.lighten('#898989', .5)},#898989)`})
   }
 
   render() {
     return (
-      <div id = "background">
+      <React.Fragment>
         <div style = {this.columnStyle}>
           <ColorSelect callback = {this.setColors}/>
         </div>
@@ -123,8 +122,7 @@ class App extends Component {
           <NumberInput init = {100} label = 'Circle Count' callback = {this.setCircleCount}/>
           <DownloadSvg />
         </div>
-      </div>
-
+      </React.Fragment>
     )
   }
 }

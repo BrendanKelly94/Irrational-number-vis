@@ -7,6 +7,7 @@ class Number extends React.Component {
       style: {
         backgroundColor: 'transparent',
         borderBottom: '2px solid transparent',
+        transition: 'all .5s ease'
       }
     }
     this.hoverState = {

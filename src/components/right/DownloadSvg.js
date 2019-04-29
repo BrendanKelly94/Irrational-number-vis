@@ -44,8 +44,8 @@ class DownloadSvg extends React.Component {
         <div id = 'download-content' style = {this.downloadContentStyle} onBlur = {this.handleBlur} tabIndex="-1" className = {(this.state.isOpen)?'visible': 'invisible'}>
           {this.string}
         </div>
-        <div style = {{position:'absolute',top: '2%', right: '2%'}}>
-          <OutlineButton fontSize = {'1'} text = {'Download'} callback = {this.handleClick} />
+        <div style = {{position:'absolute',top: '1em', right: '1em'}}>
+          <OutlineButton fontSize = {'1'} callback = {this.handleClick} > Download </OutlineButton>
         </div>
       </div>
     );

@@ -67,7 +67,7 @@ class ColorPicker extends React.Component {
         <div style ={{display:'flex'}}>
 
           <div onClick = {this.handleClick} style = {this.colorIndicatorStyle}></div>
-          <XButton size = {20} item = {'x'} color = {'#fff'} callback= {(isOpen)?this.handleClick:(_ => this.props.deleteColor(this.props.id))} transition = {isOpen}/>
+          <XButton size = {20} item = {'x'} color = {'#000'} callback= {(isOpen)?this.handleClick:(_ => this.props.deleteColor(this.props.id))} transition = {isOpen}/>
         </div>
       </div>
     );
