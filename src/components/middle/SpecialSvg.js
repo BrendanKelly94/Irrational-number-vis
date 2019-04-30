@@ -17,6 +17,7 @@ class SpecialSvg extends React.Component {
 
   componentDidUpdate(prevProps, prevState){
     if(this.props.angle !== prevProps.angle || this.props.circleCount !== prevProps.circleCount || this.props.colors !== prevProps.colors || this.props.den !== prevProps.den ){
+      console.log('prop change')
       const temp = this.buildCircles();
       this.setState({circles: temp});
     }else{

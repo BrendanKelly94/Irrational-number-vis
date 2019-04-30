@@ -58,7 +58,7 @@ class CustomNumber extends React.Component {
   }
 
   handleInputChange(e){
-    if(parseFloat(e.target.value) !== NaN){
+    if(!Number.isNaN(parseFloat(e.target.value))){
       this.setState({custom: parseFloat(e.target.value)});
       this.props.setActive(parseFloat(e.target.value));
 
